@@ -8,11 +8,11 @@ const address = process.argv[2];
 if(!address) {
     console.log('Please provide address to find the weather condition')
 } else {
-    geocode(process.argv[2], (error, data) => {
+    geocode(process.argv[2], (error, {lat, lng, address}) => {
         if(error) {
            return console.log(error);
         } 
-         forecast(data.lat, data.lng, (error, data) => {
+         forecast(lat, lng, (error, data) => {
                 if(error) {
                   return console.log(error);
                 } else {

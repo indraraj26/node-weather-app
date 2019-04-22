@@ -11,11 +11,11 @@ const request = require('request')
 
 const forecast = (lat, lng, callback) => {
     const url = `https://api.darksky.net/forecast/5e71f789076648191b13139528f9cb81/${lat}, ${lng}`;
-   request({url: url, json:true}, (error, response) => {
+   request({url, json:true}, (error, {body}) => {
        if(error) {
            callback("unable to connect forecast web api", undefined);
        } else {
-           callback(undefined,response.body.daily.data[0].summary+ " It is currently " + response.body.currently.temperature  +  " degrees out. There is "+ response.body.currently.precipProbability + "% chance of rain")
+           callback(undefined,body.daily.data[0].summary+ " It is currently " + body.currently.temperature  +  " degrees out. There is "+ body.currently.precipProbability + "% chance of rain")
        }
    })
 }
