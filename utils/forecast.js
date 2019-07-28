@@ -10,7 +10,7 @@ const request = require('request')
 //    - Success, pass forecast string for data (same format as from before)
 
 const forecast = (lat, lng, callback) => {
-    const url = `https://api.darksky.net/forecast/5e71f789076648191b13139528f9cb81/${lat}, ${lng}`;
+    const url = `https://api.darksky.net/forecast/apikey/${lat}, ${lng}`;
    request({url, json:true}, (error, {body}) => {
        if(error) {
            callback("unable to connect forecast web api", undefined);
